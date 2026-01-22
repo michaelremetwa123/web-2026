@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Michael</title>
     <style>
         body {
@@ -48,6 +49,25 @@
             text-align: center;
             margin-top: 10px;
         }
+    /* Aturan khusus untuk layar Handphone */
+@media screen and (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px; /* Mengecilkan judul agar tidak memenuhi layar */
+    }
+
+    nav ul li {
+        display: block; /* Menu navigasi akan berderet ke bawah, bukan ke samping */
+        margin: 10px 0;
+    }
+
+    table {
+        font-size: 14px; /* Mengecilkan tulisan tabel agar muat */
+    }
+}
     </style>
 </head>
 <body>
