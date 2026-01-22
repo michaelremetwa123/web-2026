@@ -12,7 +12,7 @@ h1 {
     text-align: center;
 }
 nav ul {
-    background: #2c3e50;
+    background: #22cfff;
     padding: 10px;
     list-style: none;
     text-align: center;
@@ -48,4 +48,19 @@ table {
         display: block;
         margin: 10px 0;
     }
+}
+.gallery {
+    display: flex;          /* Mengaktifkan mode horizontal */
+    justify-content: center; /* Membuat gambar berada di tengah halaman */
+    gap: 3px;              /* Memberi jarak antar gambar */
+    margin: 20px 0;         /* Memberi jarak atas dan bawah */
+}
+
+.gallery img {
+    border: 3px solid #2c3e50; /* Menambah bingkai agar lebih cantik */
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1); /* Efek membesar sedikit saat disentuh kursor */
 }
