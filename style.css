@@ -12,7 +12,7 @@ h1 {
     text-align: center;
 }
 nav ul {
-    background: #22cfff;
+    background: #1e887d;
     padding: 10px;
     list-style: none;
     text-align: center;
@@ -63,4 +63,26 @@ table {
 
 .gallery img:hover {
     transform: scale(1.1); /* Efek membesar sedikit saat disentuh kursor */
+}
+
+/* Warna standar untuk Dark Mode */
+.dark-mode {
+    background-color: #2c3e50 !important;
+    color: #ecf0f1 !important;
+}
+
+/* Biar tombolnya kelihatan bagus */
+#btn-mode {
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #2c3e50;
+    color: white;
+}
+
+.dark-mode #btn-mode {
+    background-color: white;
+    color: #2c3e50;
 }

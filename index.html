@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<button id= "btn-mode"> Ubah Mode Warna</button>
     <nav>
         <ul>
             <li><a href="index.html">Beranda</a></li>
@@ -56,6 +56,20 @@
 
     <hr>
     <p style="text-align: center;">Dibuat dengan semangat oleh Michael &copy; 2026</p>
-
+<script>
+    // Kode ini dijamin jalan karena ada di dalam file yang sama
+    const tombol = document.getElementById('btn-mode');
+    
+    tombol.onclick = function() {
+        document.body.classList.toggle('dark-mode');
+        
+        // Bonus: Ganti tulisan tombolnya biar keren
+        if (document.body.classList.contains('dark-mode')) {
+            tombol.innerText = "Nyalakan Lampu";
+        } else {
+            tombol.innerText = "Matikan Lampu";
+        }
+    };
+</script>
 </body>
 </html>
