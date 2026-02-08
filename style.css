@@ -166,3 +166,49 @@ img {
     margin: 20px auto; /* Membuat foto otomatis ke tengah */
     border-radius: 15px; /* Memberikan sudut tumpul yang cantik */
 }
+
+#hobi-section {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.dark-mode #hobi-section {
+    background: #2c3e50;
+    color: white;
+}
+
+#daftar-hobi li {
+    background: #18bc9c;
+    color: white;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    list-style: none;
+}
+/* Pastikan warna latar belakang section hobi ikut berubah saat Dark Mode */
+.dark-mode #hobi-section {
+    background-color: #2c3e50;
+    color: white;
+}
+
+/* Dan warna list-nya agar tetap kontras */
+.dark-mode #daftar-hobi li {
+    background-color: #34495e;
+    border: 1px solid #18bc9c;
+}
+
+#daftar-hobi li {
+    display: flex;
+    justify-content: space-between; /* Teks di kiri, tombol di kanan */
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#daftar-hobi button {
+    background: none;
+    border: none;
+    font-size: 14px;
+}

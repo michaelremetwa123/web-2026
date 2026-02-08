@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="welcome-msg" style="background: #f1c40f; color: #2c3e50; text-align: center; padding: 10px; font-weight: bold;">
+    Selamat datang di Website Michael! 🎣💻
+</div>
 <button id= "btn-mode"> Ubah Mode Warna</button>
     <nav>
         <ul>
@@ -23,6 +26,18 @@
     <p>Halo! Saya Michael. Hari ini saya berhasil belajar <strong>Git</strong> dan <strong>HTML</strong>.</p>
     <img src="images/foto.png" alt="Foto Michael" width="150">
 
+<section id="hobi-section">
+    <h2>Keahlian Saya</h2>
+    <ul id="daftar-hobi">
+        <li>Memancing 🎣</li>
+        <li>Koding 💻</li>
+    </ul>
+    
+    <div class="input-hobi">
+        <input type="text" id="input-baru" placeholder="Tambah keahlian baru...">
+        <button id="btn-tambah">Tambah</button>
+    </div>
+</section>
     <h3>Target Belajar:</h3>
     <ul>
         <li>Paham struktur folder</li>
@@ -78,7 +93,7 @@
     </form>
 </section>
 <script>
-    // Kode ini dijamin jalan karena ada di dalam file yang sama
+   // Kode ini dijamin jalan karena ada di dalam file yang sama
     const tombol = document.getElementById('btn-mode');
     
     tombol.onclick = function() {
@@ -91,6 +106,56 @@
             tombol.innerText = "Matikan Lampu";
         }
     };
+    // Kita pastikan seluruh halaman SELESAI dimuat dulu
+window.addEventListener('load', function() {
+    const pesan = document.getElementById('welcome-msg');
+    
+    // Tunggu 3 detik (3000ms) baru jalankan perintah hilang
+    setTimeout(function() {
+        if (pesan) {
+            pesan.style.transition = "0.5s"; // Biar hilangnya halus (smooth)
+            pesan.style.opacity = "0";       // Jadi transparan dulu
+            
+            setTimeout(function() {
+                pesan.style.display = 'none'; // Baru benar-benar dihapus
+            }, 500); 
+        }
+    }, 3000);
+});
+// tambah hobi baru
+const btnTambah = document.getElementById('btn-tambah');
+const inputBaru = document.getElementById('input-baru');
+const daftarHobi = document.getElementById('daftar-hobi');
+
+btnTambah.onclick = function() {
+    const teksHobi = inputBaru.value;
+    
+    if (teksHobi !== "") {
+        // 1. Buat elemen <li> baru
+        const liBaru = document.createElement('li');
+        liBaru.innerText = teksHobi + " "; // Tambah spasi dikit
+        
+        // 2. Buat tombol "Hapus" kecil di samping teks
+        const btnHapus = document.createElement('button');
+        btnHapus.innerText = "❌";
+        btnHapus.style.marginLeft = "10px";
+        btnHapus.style.cursor = "pointer";
+        
+        // 3. Logika saat tombol ❌ diklik
+        btnHapus.onclick = function() {
+            liBaru.remove(); // Perintah untuk menghapus baris tersebut
+        };
+        
+        // 4. Masukkan tombol ke dalam <li>, lalu <li> ke dalam daftar
+        liBaru.appendChild(btnHapus);
+        daftarHobi.appendChild(liBaru);
+        
+        // 5. Kosongkan input lagi
+        inputBaru.value = "";
+    } else {
+        alert("Isi dulu dong hobinya!");
+    }
+};
 </script>
 </body>
 </html>
