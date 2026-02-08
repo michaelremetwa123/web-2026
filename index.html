@@ -127,35 +127,50 @@ const btnTambah = document.getElementById('btn-tambah');
 const inputBaru = document.getElementById('input-baru');
 const daftarHobi = document.getElementById('daftar-hobi');
 
+// --- FUNGSI 1: Menampilkan Hobi ke Layar ---
+function tampilkanHobi(teks) {
+    const liBaru = document.createElement('li');
+    liBaru.innerText = teks + " ";
+    
+    const btnHapus = document.createElement('button');
+    btnHapus.innerText = "❌";
+    btnHapus.onclick = function() {
+        liBaru.remove();
+        hapusDariStorage(teks); // Hapus juga dari memori
+    };
+    
+    liBaru.appendChild(btnHapus);
+    daftarHobi.appendChild(liBaru);
+}
+
+// --- FUNGSI 2: Tambah & Simpan ---
 btnTambah.onclick = function() {
     const teksHobi = inputBaru.value;
-    
     if (teksHobi !== "") {
-        // 1. Buat elemen <li> baru
-        const liBaru = document.createElement('li');
-        liBaru.innerText = teksHobi + " "; // Tambah spasi dikit
-        
-        // 2. Buat tombol "Hapus" kecil di samping teks
-        const btnHapus = document.createElement('button');
-        btnHapus.innerText = "❌";
-        btnHapus.style.marginLeft = "10px";
-        btnHapus.style.cursor = "pointer";
-        
-        // 3. Logika saat tombol ❌ diklik
-        btnHapus.onclick = function() {
-            liBaru.remove(); // Perintah untuk menghapus baris tersebut
-        };
-        
-        // 4. Masukkan tombol ke dalam <li>, lalu <li> ke dalam daftar
-        liBaru.appendChild(btnHapus);
-        daftarHobi.appendChild(liBaru);
-        
-        // 5. Kosongkan input lagi
+        tampilkanHobi(teksHobi);
+        simpanKeStorage(teksHobi); // Simpan ke memori
         inputBaru.value = "";
-    } else {
-        alert("Isi dulu dong hobinya!");
     }
 };
+
+// --- FUNGSI 3: Logika Memori (LocalStorage) ---
+function simpanKeStorage(hobi) {
+    let daftar = JSON.parse(localStorage.getItem('hobiMichael')) || [];
+    daftar.push(hobi);
+    localStorage.setItem('hobiMichael', JSON.stringify(daftar));
+}
+
+function hapusDariStorage(hobi) {
+    let daftar = JSON.parse(localStorage.getItem('hobiMichael')) || [];
+    daftar = daftar.filter(item => item !== hobi);
+    localStorage.setItem('hobiMichael', JSON.stringify(daftar));
+}
+
+// --- FUNGSI 4: Ambil Data Saat Website Dibuka ---
+window.addEventListener('load', function() {
+    const daftarSimpanan = JSON.parse(localStorage.getItem('hobiMichael')) || [];
+    daftarSimpanan.forEach(hobi => tampilkanHobi(hobi));
+});
 </script>
 </body>
 </html>
